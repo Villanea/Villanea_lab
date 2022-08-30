@@ -1,0 +1,40 @@
+import sys
+model = sys.argv[1]
+
+for simNum in range(1,101):
+    intervalStart = 0
+    intervalEnd = 0
+    outLine = ""
+    intervalPattern = []
+    simFile = "archaic_kfav_sim_mp2_" + model + "_" + str(simNum) + "_segs_3fav_covtable.csv"
+    outfile = simFile[:-4] + "_slim.csv"
+    with open(outfile, 'w') as f:
+        with open(simFile) as g:
+            for line in g:
+                if 'position' in line:
+                    f.write(line)
+                else:
+                    spline = line.split(sep=",")
+                    interval = spline[0].split(sep="-")
+                    currSt, currEnd = interval[0:2]
+                    currPattern = []
+                    for i in range(1,len(spline)):
+                        if str(spline[i]) != "-1":
+                            currPattern.append(i)
+                    if currSt == intervalEnd and currPattern == intervalPattern:
+                        intervalEnd = currEnd
+                        outspline = spline
+                    else:
+                        if intervalEnd != 0:
+                            newInterval = str(intervalStart) + "-" + str(intervalEnd)
+                            outspline[0] = newInterval
+                            outLine = ",".join(outspline)
+                            f.write(outLine)
+                        intervalStart = currSt
+                        intervalEnd = currEnd
+                        intervalPattern = currPattern
+                        outspline = spline
+        newInterval = str(intervalStart) + "-" + str(intervalEnd)
+        outspline[0] = newInterval
+        outLine = ",".join(outspline)
+        f.write(outLine)
