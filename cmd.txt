@@ -1,0 +1,13 @@
+summit job: 
+        module load slurm/summit
+        sbatch xxx.sh 
+check status:
+        squeue -u $USER
+view output:
+        cat jobname.jobID.out
+
+module load slurm/blanca
+
+sbatch script.sh
+
+squeue -u $USER

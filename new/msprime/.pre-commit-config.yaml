@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: mixed-line-ending
+      - id: check-case-conflict
+      - id: check-yaml
+  - repo: https://github.com/benjeffery/pre-commit-clang-format
+    rev: c21a74d089aaeb86c2c19df371c7e7bf40c07207
+    hooks:
+    - id: clang-format
+      exclude: argtable3
+      verbose: true
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v3.0.1
+    hooks:
+      - id: reorder-python-imports
+        args: [--unclassifiable-application-module=_msprime]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.31.1
+    hooks:
+      - id: pyupgrade
+        args: [--py37-plus]
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+      - id: flake8
+        args: [--config=.flake8]
+        additional_dependencies: ["flake8-bugbear==22.3.23", "flake8-builtins==1.5.3"]
