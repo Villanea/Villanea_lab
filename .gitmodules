@@ -1,0 +1,9 @@
+[submodule "new/msprime/tskit"]
+	path = new/msprime/tskit
+	url = git@github.com:tskit-dev/tskit.git
+[submodule "orginal/msprime/tskit"]
+	path = orginal/msprime/tskit
+	url = git@github.com:tskit-dev/tskit.git
+[submodule "vgit/Neanderthal_admix"]
+	path = vgit/Neanderthal_admix
+	url = git@github.com:Villanea/Neanderthal_admix.git

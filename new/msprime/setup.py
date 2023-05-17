@@ -49,7 +49,7 @@ class PathConfigurator:
 
 
 libdir = "lib"
-tskroot = os.path.join("git-submodules", "tskit", "c")
+tskroot = os.path.join("tskit", "c")
 tskdir = os.path.join(tskroot, "tskit")
 kasdir = os.path.join(tskroot, "subprojects", "kastore")
 includes = ["lwt_interface", libdir, tskroot, tskdir, kasdir]

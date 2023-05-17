@@ -238,11 +238,11 @@ RandomGenerator_parse_seed(RandomGenerator *self, PyObject *py_seed)
     if (PyErr_Occurred()) {
         goto out;
     }
-    if (seed == 0 || seed >= (1ULL<<32)) {
+    /* if (seed == 0 || seed >= (1ULL<<32)) {
         PyErr_Format(PyExc_ValueError,
             "seeds must be greater than 0 and less than 2^32");
         goto out;
-    }
+    } */
     self->seed = seed;
     gsl_rng_set(self->rng, self->seed);
     ret = 0;
