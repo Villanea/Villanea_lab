@@ -433,9 +433,8 @@ def worker(input):
 	simulateFromDist(model_num, sim_num)
 	#neanderthal_admixture_model(mix_time1=args.m1,mix_time2=args.m2,mix_time3=args.m3,mix_time4=args.m4,split_time_1=args.t1,split_time_2=args.t2,split_time_3=args.t3,f1=args.f1,f2=args.f2,f3=args.f3,f4=args.f4,window_size = args.w,num_rep=args.n,sim_num=sim_num)
 	Symm_stat = symmetry_stat(sim_num,model_num)
-	outfile_stat(Symm_stat,sim_num,model_num)
 	outmatrix(Symm_stat,sim_num,model_num)
-
+	outfile_stat(Symm_stat,sim_num,model_num)
 
 # #end timing
 # print("time is: ", time.time() - start)

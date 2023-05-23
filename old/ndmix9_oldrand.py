@@ -1,5 +1,5 @@
 import sys
-# sys.path.append("orginal/msprime/")
+sys.path.append("orginal/msprime/")
 import msprime as msp
 import numpy as np
 import random
@@ -133,8 +133,8 @@ def neanderthal_admixture_model(num_eu=170,num_as=394,num_nean = 1,anc_time=900,
 					# print cur_win
 					cur_site = int(((cur_start+cur_end)+1)/2.0) #random.randint(cur_start,cur_end)
 					# print cur_site
-		outfile = open('outfile_sim%s_%s_%s.bed' %(model_num,args.sim,os.environ["SLURM_NODEID"]), 'a+')
-		#outfile = open('outfile_sim%s_%s.bed' %(model_num,args.sim), 'a+')
+		outfile = open('outfile_sim%s_%s_%s.bed' %(model_num,args.sim,os.environ["SLURM_NODEID"]), 'w+')
+		#outfile = open('outfile_sim%s_%s.bed' %(model_num,args.sim), 'w+')
 		for line in range(0,len(freq_AS)):
 			outfile.write(chrom)
 			outfile.write('\t')
@@ -411,6 +411,7 @@ def worker(input):
 	model_num = input[1]
 	sim_num = input[0]
 	rand_num =input[2]
+	print(rand_num)
 	simulateFromDist(model_num, sim_num, rand_num)
 	#neanderthal_admixture_model(mix_time1=args.m1,mix_time2=args.m2,mix_time3=args.m3,mix_time4=args.m4,split_time_1=args.t1,split_time_2=args.t2,split_time_3=args.t3,f1=args.f1,f2=args.f2,f3=args.f3,f4=args.f4,window_size = args.w,num_rep=args.n,sim_num=sim_num)
 	Symm_stat = symmetry_stat(sim_num,model_num)
