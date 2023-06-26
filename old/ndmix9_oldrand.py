@@ -197,8 +197,8 @@ def symmetry_stat(sim_num, model_num):
 
 #calculate and write symmetry stat
 def outfile_stat(Symm_stat,sim_num,model_num):	
-	outfile = open('data/stat_preseed/symmetry_stat_%s_%s_%s' %(model_num,sim_num,os.environ["SLURM_NODEID"]), 'a')
-	#outfile = open('symmetry_stat_%s_%s' %(model_num,sim_num), 'a')
+	outfile = open('data/stat_preseed/symmetry_stat_%s_%s_%s' %(model_num,sim_num,os.environ["SLURM_NODEID"]), 'w')
+	#outfile = open('symmetry_stat_%s_%s' %(model_num,sim_num), 'w')
 	outfile.write(str(sim_num))
 	outfile.write('\t')
 	outfile.write(str(args.t1))

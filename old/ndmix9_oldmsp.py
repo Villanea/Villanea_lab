@@ -132,8 +132,8 @@ def neanderthal_admixture_model(num_eu=170,num_as=394,num_nean = 1,anc_time=900,
 					# print cur_win
 					cur_site = int(((cur_start+cur_end)+1)/2.0) #random.randint(cur_start,cur_end)
 					# print cur_site
-		outfile = open('outfile_sim%s_%s_%s.bed' %(model_num,args.sim,os.environ["SLURM_NODEID"]), 'a+')
-		#outfile = open('outfile_sim%s_%s.bed' %(model_num,args.sim), 'a+')
+		outfile = open('outfile_sim%s_%s_%s.bed' %(model_num,args.sim,os.environ["SLURM_NODEID"]), 'w+')
+		#outfile = open('outfile_sim%s_%s.bed' %(model_num,args.sim), 'w+')
 		for line in range(0,len(freq_AS)):
 			outfile.write(chrom)
 			outfile.write('\t')
@@ -196,8 +196,8 @@ def symmetry_stat(sim_num, model_num):
 
 #calculate and write symmetry stat
 def outfile_stat(Symm_stat,sim_num,model_num):	
-	outfile = open('data/stat2/symmetry_stat_%s_%s_%s' %(model_num,sim_num,os.environ["SLURM_NODEID"]), 'a')
-	#outfile = open('symmetry_stat_%s_%s' %(model_num,sim_num), 'a')
+	outfile = open('data/stat2/symmetry_stat_%s_%s_%s' %(model_num,sim_num,os.environ["SLURM_NODEID"]), 'w')
+	#outfile = open('symmetry_stat_%s_%s' %(model_num,sim_num), 'w')
 	outfile.write(str(sim_num))
 	outfile.write('\t')
 	outfile.write(str(args.t1))

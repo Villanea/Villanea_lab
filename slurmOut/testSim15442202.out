@@ -1,6 +1,0 @@
-slurmstepd: error: Detected 4275 oom-kill event(s) in StepId=15442202.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
-srun: error: bhpc-c5-u31-1: task 0: Out Of Memory
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd: error: *** STEP 15442202.0 ON bhpc-c5-u31-1 CANCELLED AT 2023-05-23T12:09:26 DUE TO TIME LIMIT ***
-slurmstepd: error: *** JOB 15442202 ON bhpc-c5-u31-1 CANCELLED AT 2023-05-23T12:09:26 DUE TO TIME LIMIT ***
-slurmstepd: error: Detected 4275 oom-kill event(s) in StepId=15442202.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
