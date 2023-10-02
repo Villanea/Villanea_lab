@@ -1,0 +1,4 @@
+Versions used in original paper:
+    # python version 2.7
+    # msprime version 0.6.0
+    # scipy version 1.1.0

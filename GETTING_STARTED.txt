@@ -1,0 +1,72 @@
+Steps for setting up:
+	# first session
+		# connect to curc
+			ssh <user>@login.rc.colorado.edu
+		# create soft link to villanea_lab
+			ln -s /pl/active/villanea_lab villanea_lab
+		# load blanca
+			module load slurm/blanca
+		# install conda
+			source /curc/sw/anaconda3/latest
+		# reroute envs and pkgs to projects (due to /home storage quota)
+			conda config --add envs_dirs ~/../../projects/<user>/.conda/envs
+			conda config --add pkgs_dirs ~/../../projects/<user>/.conda/pkgs
+			# conda info to check if worked
+		# create environment at ~/../../projects/<user>/.conda/envs/msprime_env
+			conda create --name msprime_env
+		# to activate environment
+			conda activate ~/../../projects/<user>/.conda/envs/msprime_env/
+		# install pip
+			conda install -c anaconda pip
+		# install gsl library
+			python -m pip install gsl
+		# install tskit library
+			python -m pip install tskit
+		# install demes library
+			python -m pip install demes
+		# install scipy library
+			python -m pip install scipy
+		# install tensorflow library
+			python -m pip install tensorflow
+		# install gsl
+			conda install -c conda-forge gsl
+		# generate ssh-key
+			ssh-keygen -t rsa
+		# print and set up ssh
+			cat ~/.ssh/	curc.pub
+			# set up ssh using printed key
+		# clone repository with submodules
+			git clone --recurse-submodules git@github.com:Villanea/Villanea_lab.git
+			# `git submodule update` to update submodules
+		# in new/msprime and old/orginal/msprime directories to build
+			make
+		# to deactivate environment
+			conda deactivate
+	# every session
+		# connect to curc
+			ssh <user>@login.rc.colorado.edu
+		# load blanca
+			module load slurm/blanca
+		# install conda
+			source /curc/sw/anaconda3/latest
+		# to activate environment
+			conda activate ~/../../projects/<user>/.conda/envs/msprime_env/
+		# to deactivate environment
+			conda deactivate
+	
+Using VSCode remotely:
+	# setting up
+		# install "Remote -SSH" extension
+		# Open a Remote Window (bottom right corner)
+		# Connect to Host
+		# Add New SSH Host...
+		# input "ssh <user>@login.rc.colorado.edu"
+	# connect
+		# Connect to Host...
+		# select login.rc.colorado.edu
+		# input password
+	# disconnect
+		# File > Close Remote Connection
+		# check if disconnected using `ss | grep -i ssh`
+	# every once in a while clear vscode meta data
+		rm -r ~/.vscode-server

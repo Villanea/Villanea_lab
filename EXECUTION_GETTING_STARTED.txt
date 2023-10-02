@@ -1,0 +1,40 @@
+Running simulations:
+    # script/test_sim.sh
+        configure use of node
+            #SBATCH --nodes=XX
+            #SBATCH --ntasks=XX
+            #SBATCH --cpus-per-task=YY
+        toggle between priority and nonpriority nodes
+            #SBATCH --qos=blanca-villanea
+            --or--
+            #SBATCH --qos=preemptable
+        configure file for output
+            #SBATCH --output slurmOut/test_sim%j.out
+        configure environment and executable
+            srun /bin/bash -c "source /curc/sw/anaconda3/latest; conda activate /projects/<user>/.conda/envs/msprime_env; python3 test_sim.py;"
+        schedule job
+            sbatch script/test_sim.sh
+    # test_sim.py
+        toggle between ndmix9.py file
+            import ndmix9_XX as ndmix9
+        configure the number of simulations per node
+            num_replicates = XX
+
+Running models:
+    # data_checker.py
+        determine uncorrupted simulations
+            python3 data_checker.py <job_id>
+    # script/test_mod.sh
+        configure file for output
+            #SBATCH --output slurmOut/test_mod%j.out
+        configure environment and executable
+            srun /bin/bash -c "source /curc/sw/anaconda3/latest; conda activate /projects/<user>/.conda/envs/msprime_env; python3 network_101x101.py <sim_num> <job_id>;" 
+        schedule job
+            sbatch script/test_mod.sh
+    # script/test_mod_pairwise.sh
+        configure file for output
+            #SBATCH --output slurmOut/test_mod_pairwise%j.out
+        configure environment and executable
+            srun /bin/bash -c "source /curc/sw/anaconda3/latest; conda activate /projects/<user>/.conda/envs/msprime_env; python3 network_pairwise.py <sim_num> <job_id>;" 
+        schedule job
+            sbatch script/test_mod_pairwise.sh

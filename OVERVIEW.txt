@@ -1,0 +1,26 @@
+- data                      : data from simulations
+    - job<job_id>           : data for <job_id>
+        - corrupt           : corrupt data 
+        - mat               : both compressed and uncompressed matrices
+        - outfile           : temporarily stores .bed files
+        - stat              : randomized parameters
+- new/msprime               : modified msprime library
+- old                       : old repository
+- original                  : original n_admix.py files from paper
+- rng_producer              : two variations for generating random numbers to pass through dieharder
+- script                    : job scheduling files
+    - test_mod_pairs.sh     : comparing pairwise
+    - test_mod.sh           : comparing all models
+    - test_sim.sh           : running simulations
+- slurmOut                  : job outputs
+- vgit                      : submodule containing Neanderthal_admix repository
+- collapse_introgressed     : unknown
+- data_checker.py           : checker for corrupted data
+- model.txt                 : unknown
+- ndmix9_newmsp.py          : simulation using modified msprime
+- ndmix9_oldold.py          : simulation from original paper
+- ndmix9_updated.py         : simulation with flags removed
+- network_101x101.py        : machine learning model to compare models
+- network_pairwise.py       : machine learning model for pairwise comparison between models
+- test_sim.py               : file to configure simulation version
+- Two-pop introgression     : unknown
