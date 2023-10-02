@@ -1,0 +1,6 @@
+  File "n_admix_10.py", line 71
+    random_seed=seed
+              ^
+SyntaxError: invalid syntax
+srun: error: bhpc-c5-u31-1: task 0: Exited with exit code 1
+Execution time was 2 seconds.

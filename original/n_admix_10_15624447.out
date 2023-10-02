@@ -1,0 +1,6 @@
+  File "n_admix_10.py", line 78
+    cur_win = 1
+    ^
+IndentationError: unexpected indent
+srun: error: bhpc-c5-u31-2: task 0: Exited with exit code 1
+Execution time was 1 seconds.

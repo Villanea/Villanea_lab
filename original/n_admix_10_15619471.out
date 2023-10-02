@@ -1,0 +1,4 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 15619471 ON bnode0510 CANCELLED AT 2023-07-28T09:58:59 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 15619471.0 ON bnode0510 CANCELLED AT 2023-07-28T09:58:59 DUE TO TIME LIMIT ***
+slurmstepd: error: Detected 18 oom-kill event(s) in StepId=15619471.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

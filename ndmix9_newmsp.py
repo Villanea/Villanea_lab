@@ -81,6 +81,7 @@ def neanderthal_admixture_model(num_eu=170,num_as=394,num_nean = 1,anc_time=900,
         # pass_str = str(chr)+"_"+str(sim_num)+"_"+str(model_num)
         args.sim = sim_num
         seed = int.from_bytes(hashlib.sha256(pass_str.encode('utf-8')).digest()[:8], 'little')
+        # seed = long.from_bytes(hashlib.sha256(pass_str.encode('utf-8')).digest()[:8], 'little')
         sims = msp.simulate(samples=samples,
 							Ne=Ne0,
 							population_configurations=pop_config,
@@ -90,19 +91,6 @@ def neanderthal_admixture_model(num_eu=170,num_as=394,num_nean = 1,anc_time=900,
 							num_replicates=1, 
 							random_seed=seed,
 							record_provenance=False)
-        # last = np.array(rho_map.position[-1])
-        # samples = [msp.SampleSet(num_samples=num_eu, population=0, time=0), msp.SampleSet(num_samples=num_as, population=1, time=0), msp.SampleSet(num_samples=num_nean, population=3, time=anc_time)]
-        # rho_map = msp.RateMap.read_hapmap(infile)
-        # demography = msp.Demography.from_old_style(population_configurations=pop_config, demographic_events=divergence, Ne=Ne0)
-        # sims = msp.sim_ancestry(samples=samples,
-        #                         recombination_rate=rho_map,
-        #                         demography=demography,
-        #                         random_seed=seed,
-        #                         record_provenance=False)
-        # sims = msp.sim_mutations(tree_sequence=sims,
-        #                         rate=mu,
-        #                         random_seed=seed)
-        # sims = [sims]
         chrom = "chr%s" %(chr)
         pos = []
         pos1 = []
@@ -175,7 +163,7 @@ def symmetry_stat(sim_num, model_num):
     # AS = np.genfromtxt('data/outfile/outfile_sim%s_%s.bed' %(model_num, sim_num), usecols=4)
     
     # delete sim file
-    # os.system("rm data/job%s/outfile/outfile_sim%s_%s_%s.bed" %(os.environ["SLURM_JOB_ID"],model_num, sim_num,os.environ["SLURM_NODEID"]))
+    os.system("rm data/job%s/outfile/outfile_sim%s_%s_%s.bed" %(os.environ["SLURM_JOB_ID"],model_num, sim_num,os.environ["SLURM_NODEID"]))
     # os.system("rm data/outfile/outfile_sim%s_%s.bed" %(model_num, sim_num))
     
     # initialize and fill the matrix
@@ -264,6 +252,7 @@ def simulateFromDist(sim_num, model_num):
     pass_str = "uniform_seed"+"_" + str(sim_num)+"_" + str(model_num)+os.environ["SLURM_JOB_ID"]+"_"+os.environ["SLURM_NODEID"]
     # pass_str = "uniform_seed"+"_" + str(sim_num)+"_" + str(model_num)
     seed = int.from_bytes(hashlib.sha256(pass_str.encode('utf-8')).digest()[:8], 'little')
+    # seed = long.from_bytes(hashlib.sha256(pass_str.encode('utf-8')).digest()[:8], 'little')
     rg = _msprime.RandomGenerator(seed)
     m_bound = 2000
     t_bound = 2000
@@ -284,17 +273,17 @@ def simulateFromDist(sim_num, model_num):
     # d = scipy.stats.uniform.rvs(loc=0, scale=0.01, size=num_reps)
     d = int(rg.uniform_int(1000000000)[0])*0.00000000001
     
-    args.t1 = t1
-    args.t2 = 3000
-    args.t3 = t3
-    args.m1 = m1
-    args.m2 = m2
-    args.m3 = m3
-    args.m4 = m4
+    # args.t1 = t1
+    # args.t2 = 3000
+    # args.t3 = t3
+    # args.m1 = m1
+    # args.m2 = m2
+    # args.m3 = m3
+    # args.m4 = m4
     
     if model_num == 1:
         f1 = a
-        args.f1 = f1
+        # args.f1 = f1
         print("model 1: ")
         print("t1:{} t3:{} m1:{} m2:{} m3:{} m4:{} a:{} d:{} f1:{} f2:{} f3:{} f4:{}".format(t1, t3, m1, m2, m3, m4, a, d, f1, args.f2, args.f3, args.f4))
         print('\n')
@@ -318,8 +307,8 @@ def simulateFromDist(sim_num, model_num):
     elif model_num == 2:
         f1 = a-(d/2)
         f2 = d/(1+(d/2)-a)
-        args.f1 = f1
-        args.f2 = f2
+        # args.f1 = f1
+        # args.f2 = f2
         print("model 2: ")
         print("t1:{} t3:{} m1:{} m2:{} m3:{} m4:{} a:{} d:{} f1:{} f2:{} f3:{} f4:{}".format(t1, t3, m1, m2, m3, m4, a, d, f1, f2, args.f3, args.f4))
         print('\n')
@@ -345,9 +334,9 @@ def simulateFromDist(sim_num, model_num):
         f1 = int(rg.uniform_int(temp)[0])*0.00000000001
         f2 = (a+(d/2)-f1)/(1-f1)
         f3 = (a-(d/2)-f1)/(1-f1)
-        args.f1 = f1
-        args.f2 = f2
-        args.f3 = f3
+        # args.f1 = f1
+        # args.f2 = f2
+        # args.f3 = f3
         print("model 3: ")
         print("t1:{} t3:{} m1:{} m2:{} m3:{} m4:{} a:{} d:{} f1:{} f2:{} f3:{} f4:{}".format(t1, t3, m1, m2, m3, m4, a, d, f1, f2, f3,  args.f4))
         print('\n')
@@ -371,8 +360,8 @@ def simulateFromDist(sim_num, model_num):
     elif model_num == 4:
         f1 = a+(d/2)
         f4 = d/(a+(d/2))
-        args.f1 = f1
-        args.f4 = f4
+        # args.f1 = f1
+        # args.f4 = f4
         print("model 4: ")
         print("t1:{} t3:{} m1:{} m2:{} m3:{} m4:{} a:{} d:{} f1:{} f2:{} f3:{} f4:{}".format(t1, t3, m1, m2, m3, m4, a, d, f1,  args.f2,  args.f3, f4))
         print('\n')
@@ -398,10 +387,10 @@ def simulateFromDist(sim_num, model_num):
         f2 = (a+(d/2)-f1)/(1-f1)
         f4 = int(rg.uniform_int(50000000)[0])*0.00000001
         f3 = (a-(d/2)-f1*(1-f4))/(1-f1)*(1-f4)
-        args.f1 = f1
-        args.f2 = f2
-        args.f3 = f3
-        args.f4 = f4
+        # args.f1 = f1
+        # args.f2 = f2
+        # args.f3 = f3
+        # args.f4 = f4
         print("model 5: ")
         print("t1:{} t3:{} m1:{} m2:{} m3:{} m4:{} a:{} d:{} f1:{} f2:{} f3:{} f4:{}".format(t1, t3, m1, m2, m3, m4, a, d, f1, f2, f3, f4))
         print('\n')
@@ -426,6 +415,12 @@ def simulateFromDist(sim_num, model_num):
 def worker(input):
     sim_num = input[0]
     model_num = input[1]
+    if os.path.isfile("data/job%s/mat/symmetry_matrix_%s_%s_%s" %(os.environ["SLURM_JOB_ID"], model_num, sim_num, os.environ["SLURM_NODEID"])):
+        mat = np.loadtxt("data/job%s/mat/symmetry_matrix_%s_%s_%s" %(os.environ["SLURM_JOB_ID"], model_num, sim_num, os.environ["SLURM_NODEID"]))
+        if mat.shape == (64, 64): 
+            return
+        else:
+            os.system("rm data/job%s/mat/symmetry_matrix_%s_%s_%s" %(os.environ["SLURM_JOB_ID"],model_num, sim_num,os.environ["SLURM_NODEID"]))
     simulateFromDist(sim_num,model_num)
     Symm_stat = symmetry_stat(sim_num,model_num)
     outfile_stat(sim_num,model_num)

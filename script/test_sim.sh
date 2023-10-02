@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # number of nodes
-#SBATCH --nodes=50
-#SBATCH --ntasks=50
+#SBATCH --nodes=25
+#SBATCH --ntasks=25
 #SBATCH --cpus-per-task=40
 
 # Request to run on Villanea Lab node
 ##SBATCH --qos=blanca-villanea
 #SBATCH --qos=preemptable
-##SBATCH --partition=shas
 
 # Request runtime:
 #SBATCH --time=01-00:00:00

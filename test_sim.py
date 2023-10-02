@@ -1,4 +1,4 @@
-import ndmix9_newmsp as ndmix9
+import ndmix9_updated as ndmix9
 import concurrent.futures
 import os
 
@@ -23,8 +23,8 @@ if __name__ == '__main__':
         os.makedirs("data/job"+os.environ["SLURM_JOB_ID"]+"/outfile")
     except FileExistsError:
         pass
-    for model_num in range(1, 6):
-        num_replicates = 40
+    for model_num in [1, 2, 3, 4, 5]:
+        num_replicates = 80
         # sim_num, model_num
         sim_num = [[i,model_num] for i in range(1,num_replicates+1)]
         with concurrent.futures.ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:

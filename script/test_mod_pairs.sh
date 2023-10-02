@@ -27,6 +27,6 @@
 # Run a command
 module purge
 start=`date +%s` 
-srun /bin/bash -c "source /curc/sw/anaconda3/latest; conda activate /projects/maea8398/.conda/envs/msprime_env; python3 network_101x101.py 1920 15548657;" 
+srun /bin/bash -c "source /curc/sw/anaconda3/latest; conda activate /projects/maea8398/.conda/envs/msprime_env; python3 network_pairwise.py 2000 15735363;" 
 end=`date +%s`
 echo Execution time was `expr $end - $start` seconds.

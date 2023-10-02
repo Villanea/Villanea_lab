@@ -1,0 +1,4 @@
+running sims...
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 15624501.0 ON bhpc-c5-u31-2 CANCELLED AT 2023-08-01T08:34:06 ***
+slurmstepd: error: *** JOB 15624501 ON bhpc-c5-u31-2 CANCELLED AT 2023-08-01T08:34:06 ***
